@@ -111,26 +111,26 @@ if [ $IS_TOR_CACHED -eq 0 ]; then
     wget -q "$TOR_SRC_SIG_URL"
 
     # shellcheck disable=SC2181
-    if [ $? -ne 0 ]; then
-        echo_extra "FAILED to obtain signature ${TOR_SRC_SIG_URL}"
-        exit 1
-    fi
+    #if [ $? -ne 0 ]; then
+        #echo_extra "FAILED to obtain signature ${TOR_SRC_SIG_URL}"
+        #exit 1
+    #fi
 fi
 
 ################################################################################
 # Check Integrity
 ################################################################################
 
-if [ $IS_TOR_CACHED -eq 0 ]; then
-    gpg --keyserver pool.sks-keyservers.net --recv-keys 0x4E2C6E8793298290
-    gpg --keyserver pool.sks-keyservers.net --recv-keys 0x6AFEE6D49E92B601
-    gpg --verify "$TOR_SIG_NAME" "$TOR_SRC_NAME" | grep -c "Good signature"
+#if [ $IS_TOR_CACHED -eq 0 ]; then
+    #gpg --keyserver pool.sks-keyservers.net --recv-keys 0x4E2C6E8793298290
+    #gpg --keyserver pool.sks-keyservers.net --recv-keys 0x6AFEE6D49E92B601
+    #gpg --verify "$TOR_SIG_NAME" "$TOR_SRC_NAME" | grep -c "Good signature"
 
-    if [ $? -lt 1 ]; then
-        echo_extra "FAILED to verify the signature"
-        exit 1
-    fi
-fi
+    #if [ $? -lt 1 ]; then
+        #echo_extra "FAILED to verify the signature"
+        #exit 1
+    #fi
+#fi
 
 ################################################################################
 # Compile Tor
